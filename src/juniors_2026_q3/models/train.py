@@ -13,7 +13,7 @@ from sklearn.inspection import permutation_importance
 from sklearn.metrics import mean_absolute_error, mean_squared_error
 
 from juniors_2026_q3.dataset import curate_rfqs
-from juniors_2026_q3.integration.build_features import build_features
+from juniors_2026_q3.integration.build_features import build_features, prepare_volatility_context
 from juniors_2026_q3.models.model_card import generate_model_card
 from juniors_2026_q3.models.pipeline import build_pipeline, select_features
 
@@ -34,8 +34,8 @@ def main():
     ur_raw = pd.read_csv(DATA_DIR / "underlyings_reference.csv")
 
     rfqs_curated = curate_rfqs(rfqs_raw)
-    df = build_features(rfqs_curated, dv_raw, ur_raw)
-    df = df.sort_values("requested_date").reset_index(drop=True)
+    context = prepare_volatility_context(dv_raw, ur_raw)
+    df = build_features(rfqs_curated, context) 
 
     split_idx = int(len(df) * (1 - TEST_FRACTION))
     fecha_corte = df.iloc[split_idx]["requested_date"]

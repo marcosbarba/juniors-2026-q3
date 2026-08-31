@@ -2,7 +2,7 @@
 
 **Fecha de generación**: 2026-08-30
 **Modelo**: HistGradientBoostingRegressor (scikit-learn)
-**Datos**: 10789 RFQs train / 2704 RFQs test (split temporal 80/20)
+**Datos**: 6563 RFQs train / 6930 RFQs test (split temporal 80/20)
 
 ## Uso previsto
 
@@ -14,23 +14,23 @@ se ejecute — el modelo no predice si una RFQ se va a ejecutar o no.
 
 | Métrica | Modelo | Baseline (mediana de train) |
 |---|---|---|
-| MAE  | 11.46 | 17.51 |
-| RMSE | 15.22 | 22.71 |
+| MAE  | 11.20 | 16.79 |
+| RMSE | 14.86 | 22.04 |
 
-Mejora sobre baseline: 34.5% en MAE.
+Mejora sobre baseline: 33.3% en MAE.
 
 ## Variables más importantes (permutation importance, sobre test)
 
 | feature                      |   importance |
 |:-----------------------------|-------------:|
-| product_type                 |     4.09625  |
-| observation_frequency_months |     1.36007  |
-| structural_vol_mean          |     1.31608  |
-| structural_vol_std           |     0.995534 |
-| autocall_barrier_pct         |     0.922673 |
-| protection_barrier_pct       |     0.846274 |
-| vol_level_max                |     0.572142 |
-| vol_level_mean               |     0.516944 |
+| product_type                 |     3.74392  |
+| autocall_barrier_pct         |     1.79421  |
+| observation_frequency_months |     1.43854  |
+| structural_vol_mean          |     1.37318  |
+| structural_vol_std           |     0.878704 |
+| vol_level_mean               |     0.539535 |
+| basket_corr_mean             |     0.53682  |
+| vol_level_max                |     0.500839 |
 
 ## Limitaciones conocidas
 

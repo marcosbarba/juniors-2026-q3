@@ -71,7 +71,7 @@ def clean_rfqs(df: pd.DataFrame) -> pd.DataFrame:
     """
     df = df.copy()
 
-    df["requested_date"] = pd.to_datetime(df["requested_date"])
+    df["requested_date"] = pd.to_datetime(df["requested_date"]).astype("datetime64[ns]")
 
     mapped = df["observation_frequency"].map(OBS_FREQUENCY_MAP)
     unknown_mask = mapped.isna() & df["observation_frequency"].notna()
@@ -100,7 +100,7 @@ def clean_daily_volatility(df: pd.DataFrame) -> pd.DataFrame:
     son responsabilidad del módulo de integración, no de esta función.
     """
     df = df.copy()
-    df["date"] = pd.to_datetime(df["date"])
+    df["date"] = pd.to_datetime(df["date"]).astype("datetime64[ns]")
     return df
 
 

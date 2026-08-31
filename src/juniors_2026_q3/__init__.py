@@ -15,4 +15,5 @@ def main():
         from juniors_2026_q3.models.train import main as train_main
         train_main()
     elif args.command == "serve":
-        raise NotImplementedError("API de inferencia todavía no implementada")
+        import uvicorn
+        uvicorn.run("juniors_2026_q3.api.main:app", host="127.0.0.1", port=8000)
